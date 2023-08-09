@@ -1,0 +1,17 @@
+================== JDBC 기본코드 ==================
+String url = "jdbc:oracle:thin:@호스트이름:포트/서비스이름";
+String sql = "사용하고자하는 SQL문";
+		
+Class.forName("oracle.jdbc.driver.OracleDriver");
+Connection con = DriverManager.getConnection(url,'아이디','비밀번호');
+Statement st = con.createStatement();
+ResultSet rs = st.executeQuery(sql);
+		
+if(rs.next()) {
+			String name = rs.getString("name");
+			System.out.println(name);
+}
+		
+rs.close();
+st.close();
+con.close();
